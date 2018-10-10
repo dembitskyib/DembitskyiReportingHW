@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="gmail functional test suite"
+	data-provider-thread-count="3" parallel="methods">
+	<listeners>
+		<listener class-name="com.epam.lab.homeWork.listener.GmailTestListener" />
+	</listeners>
+	<test name="GmailTestSuccess">
+		<parameter name="userDataXLSX" value="src/test/resources/users.xlsx" />
+		<classes>
+			<class name="com.epam.lab.homeWork.GmailSendTest" />
+		</classes>
+	</test>
+	<test name="GmailTestFailed">
+		<parameter name="userDataXLSX" value="src/test/resources/badUsers.xlsx" />
+		<classes>
+			<class name="com.epam.lab.homeWork.GmailSendTest" />
+		</classes>
+	</test>
+</suite>
