@@ -19,7 +19,6 @@ public class GmailMessageBO {
 	}
 
 	public void writeEmailAndSave(Message message) {
-		gmailHomePage.isURLCorrect("mail");
 		logger.info(String.format("%s: Clicking compose button", threadName));
 		gmailHomePage.composeClick();
 		boolean isBlockOpened = false;
@@ -48,6 +47,10 @@ public class GmailMessageBO {
 		if (gmailHomePage.checkComposeFields(message)) {
 			gmailHomePage.clickSendButton();
 		}
+	}
+
+	public boolean isInitialUrlCorrect() {
+		return gmailHomePage.isURLCorrect("inbox");
 	}
 
 	public boolean isEmailSendingSuccessful() {

@@ -34,6 +34,7 @@ public class GmailSendTest {
 		LoginBO loginBO = new LoginBO(chromeDriver, pageUpdateTimeOut);
 		loginBO.logIn(email, password);
 		GmailMessageBO gmailMessageBO = new GmailMessageBO(chromeDriver, pageUpdateTimeOut);
+		Assert.assertTrue(gmailMessageBO.isInitialUrlCorrect());
 		gmailMessageBO.writeEmailAndSave(message);
 		gmailMessageBO.openDraftAndSend(message);
 		Assert.assertTrue(gmailMessageBO.isEmailSendingSuccessful());
